@@ -11,9 +11,9 @@ type Model = {
 const ModelsSelector = ({models}:{models:Model[]}) => {
   return (
     <select className="select select-primary w-full max-w-xs">
-        {models.map((model) => {
+        {models.map((model,index) => {
             return(
-                <option>{model.title}</option>
+                <option key={index}>{model.title}</option>
             )
         })}
 

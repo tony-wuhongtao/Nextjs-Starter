@@ -10,6 +10,10 @@ const links = [
         href:'/drinks',
         label:'Drinks'
     },
+    {
+        href:'/products',
+        label:'Products'
+    },
     // {
     //     href:'tasks',
     //     label:'Tasks'
