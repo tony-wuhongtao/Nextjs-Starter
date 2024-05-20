@@ -1,7 +1,9 @@
 'use client'
 import { useState } from 'react';
-import Spinner from '@/components/Spinner';
+// import Spinner from '@/components/Spinner';
+import Loading from '@/components/Loading';
 import ModelsSelectorWrapper from '@/components/ModelSelectorWrapper';
+import ProgressBar from '@/components/ProgressBar';
 
 export default function Txt2ImagePage() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -61,10 +63,11 @@ export default function Txt2ImagePage() {
             {isLoading ? '稍等，AI计算中...' : '生成图像'}
           </button>
         </div>
-
+        <ProgressBar isLoading={isLoading} /> {/* 渲染 ProgressBar 组件 */}
         <div className="flex justify-center">
           {isLoading ? (
-            <Spinner /> // 显示加载动画
+            // <Spinner /> // 显示加载动画
+            <Loading /> // 显示加载动画
           ) : imgCode ? (
             <img src={`data:image/png;base64,${imgCode}`} width="512" alt="生成的图像" />
           ) : null}
