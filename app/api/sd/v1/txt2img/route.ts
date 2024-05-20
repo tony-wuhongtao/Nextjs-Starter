@@ -9,10 +9,14 @@ export async function POST(request: NextRequest) {
 
 
     const data = await request.formData()
-    const prompt = data.get('prompt')
+    const prompt = data.get('prompt')?.toString() || ''
+    const sd_model_checkpoint = data.get('model')?.toString() || ''
 
     const body : Txt2img = {
-        prompt: prompt as string
+        prompt,
+        override_settings:{
+            sd_model_checkpoint
+        }
     }
 
     const txt2imgRes = await fetch(baseUrl + port + routePath,{

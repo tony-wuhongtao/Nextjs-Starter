@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 import Spinner from '@/components/Spinner';
+import ModelsSelectorWrapper from '@/components/ModelSelectorWrapper';
 
 export default function Txt2ImagePage() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -18,6 +19,8 @@ export default function Txt2ImagePage() {
     const formData = new FormData(event.currentTarget)
     const prompt = formData.get('prompt')
     console.log(prompt)
+    const selectedModel = formData.get('model')
+    console.log(selectedModel)
 
     try {
       const res = await fetch('/api/sd/v1/txt2img', {
@@ -46,7 +49,8 @@ export default function Txt2ImagePage() {
             name='prompt'
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 flex justify-center">
+          <ModelsSelectorWrapper />
         </div>
         <div className="mb-4 flex justify-center">
           <button
