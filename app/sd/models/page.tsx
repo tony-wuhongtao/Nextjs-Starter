@@ -1,8 +1,8 @@
 import ModelsSelector from "@/components/ModelsSelector"
 
 
-const url = 'http://127.0.0.1:3000/api/sd/v1/sd-models'
-// const url = 'http://127.0.0.1:7860/sdapi/v1/sd-models'
+const url = 'http://localhost:3000/api/sd/v1/sd-models'
+
 
 
 const fetchModels = async () => {

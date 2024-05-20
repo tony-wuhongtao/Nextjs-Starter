@@ -37,11 +37,11 @@ export async function POST(request: NextRequest) {
     }
 
     return new Response(JSON.stringify(txt2imgResponseJson), {
-        status: 200,
-        headers: {
-        "content-type": "application/json",
-        "cache-control": "public, s-maxage=1200, stale-while-revalidate=600",
-        },
+        // status: 200,
+        // headers: {
+        // "content-type": "application/json",
+        // "cache-control": "public, s-maxage=1200, stale-while-revalidate=600",
+        // },
     });
 
 }

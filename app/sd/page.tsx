@@ -12,7 +12,7 @@ export default function Txt2ImagePage() {
     })
 
     const data = await res.json();
-    // console.log(data.images);
+    console.log(data.images);
     setImgCode(data.images[0]); // 更新imgCode状态
 
     
