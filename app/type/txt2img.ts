@@ -1,6 +1,6 @@
 
 export type Override_settings {
-    sd_model_checkpoint?: string;
+    sd_model_checkpoint?: string = 'SD1.5\少儿插画_v1.safetensors';
 }
 
 export type Txt2img {
