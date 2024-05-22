@@ -30,7 +30,7 @@ export default function Txt2ImagePage() {
       try {
         const res = await fetch('/api/ai/v1/cn2en', {
           method: 'POST',
-          body: formData,
+          body: JSON.stringify({ cnTxt: cnprompt }),
         })
         const data = await res.json()
   
@@ -105,7 +105,9 @@ export default function Txt2ImagePage() {
             {isLoading ? '稍等，AI计算中...' : '生成图像'}
           </button>
         </div>
-        <ProgressBar isLoading={isLoading} /> {/* 渲染 ProgressBar 组件 */}
+
+        {/* <ProgressBar isLoading={isLoading} />  */}
+
         <div className="flex justify-center">
           {isLoading ? (
             // <Spinner /> // 显示加载动画

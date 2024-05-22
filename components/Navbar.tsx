@@ -14,10 +14,10 @@ const links = [
         href:'/products',
         label:'Products'
     },
-    // {
-    //     href:'tasks',
-    //     label:'Tasks'
-    // },
+    {
+        href:'/ai',
+        label:'AI'
+    },
     // {
     //     href:'query',
     //     label:'Query'
