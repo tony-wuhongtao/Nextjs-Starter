@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
 
     const data = await request.formData()
-    const prompt = data.get('prompt')?.toString() || ''
+    const prompt = data.get('enprompt')?.toString() || ''
     const sd_model_checkpoint = data.get('model')?.toString() || ''
 
     const body : Txt2img = {
