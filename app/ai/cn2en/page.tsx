@@ -16,18 +16,31 @@ const cn2enPage = () => {
     const handleSubmit = async () => {
         setIsLoading(true)
         setIsButtonDisabled(true)
-        try{
-            const res = await axios.post('/api/ai/v1/cn2en',{ cnTxt })
+        // try{
+        //     const res = await axios.post('/api/ai/v1/cn2en',{ cnTxt })
 
-            console.log(res.data)
+        //     console.log(res.data)
+        //     setEnTxt(res.data)
+        //     setIsLoading(false)
+        //     setIsButtonDisabled(false)
+
+        // }catch(error){
+        //     // Handle error
+        //     console.error('Error submitting data:', error);
+        // }
+
+        // 两种写法
+        
+        axios.post('/api/ai/v1/cn2en',{ cnTxt }).then((res)=>{
+            console.log(res)
             setEnTxt(res.data)
             setIsLoading(false)
             setIsButtonDisabled(false)
-
-        }catch(error){
+        }).catch((error)=>{
             // Handle error
             console.error('Error submitting data:', error);
-        }
+        })
+    
     }
 
 
