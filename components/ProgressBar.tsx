@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 const ProgressBar = ({isLoading}:{ isLoading: boolean }) => {
     const [progress, setProgress] = useState(0);
-    const [eta, setEta] = useState(0);
+    // const [eta, setEta] = useState(0);
 
     useEffect(() => {
         let interval: NodeJS.Timeout | undefined; // 显式地定义 interval 的类型
@@ -16,7 +16,7 @@ const ProgressBar = ({isLoading}:{ isLoading: boolean }) => {
                     console.log('Progress:', data.progress)
                     setProgress(data.progress * 100)
                     //保留一位小数
-                    setEta(data.eta_relative.toFixed(1))
+                    // setEta(data.eta_relative.toFixed(1))
                 }catch(error){
                     console.error('Error fetching progress:', error);
                 }
@@ -37,7 +37,7 @@ const ProgressBar = ({isLoading}:{ isLoading: boolean }) => {
                 max="100"
                 >
                 </progress>
-                <p>预估等待：{eta} 秒</p>
+                {/* <p>预估等待：{eta} 秒</p> */}
             </div>
             )}
         </div>

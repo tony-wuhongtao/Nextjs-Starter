@@ -23,8 +23,8 @@ const links = [
     //     label:'Query'
     // }
     {
-        href: '/sd',
-        label: 'Stable Diffusion'
+        href: '/txt2imgv2',
+        label: 'SD Text to Image'
     }
 ]
 

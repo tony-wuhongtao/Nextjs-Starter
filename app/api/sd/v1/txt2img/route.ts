@@ -9,6 +9,8 @@ export async function POST(request: NextRequest) {
 
 
     const data = await request.formData()
+
+    console.log("data in api", data);
     const prompt = data.get('enprompt')?.toString() || ''
     const sd_model_checkpoint = data.get('model')?.toString() || ''
 
