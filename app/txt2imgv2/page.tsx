@@ -80,8 +80,8 @@ export default function Txt2ImagePage() {
   const queryTaskStatus = async () => {
     try {
       const res = await axios.get(`/api/sd/v1/txt2img-task?taskId=${taskId}`);
-      console.log(taskId)
-      console.log(res.data);
+      // console.log(taskId)
+      // console.log(res.data)
       if (res.data.message === 'success') {
         if (res.data.status === 'processing') {
           setIsPending(false)

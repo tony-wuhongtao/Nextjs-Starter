@@ -25,6 +25,10 @@ const links = [
     {
         href: '/txt2imgv2',
         label: 'SD Text to Image'
+    },
+    {
+        href: '/dify/txt2img',
+        label: 'SD Text to Image by Dify API'
     }
 ]
 
