@@ -9,6 +9,9 @@ function HomePage() {
       <Link href='/client' className="btn btn-outline btn-primary text-2xl mr-6">
         Get start
       </Link>
+      <Link href='/upload' className="btn btn-outline btn-primary text-2xl mr-6">
+        Upload Demo
+      </Link>
       <Link href='/sd' className="btn btn-primary text-2xl">
         Go to SD
       </Link>
