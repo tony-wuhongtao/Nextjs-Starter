@@ -14,6 +14,14 @@ const links = [
         href:'/products',
         label:'Products'
     },
+    // {
+    //     href:'/prisma-example',
+    //     label:'Prisma'
+    // },
+    {
+        href:'/tasks',
+        label:'Tasks'
+    },
     {
         href:'/ai',
         label:'AI'
