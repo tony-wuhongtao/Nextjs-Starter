@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/TaskForm.tsx", "app/providers.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "components/TaskForm.tsx", "app/providers.js", "app/products/page.jsx", "app/sd/page.jsx", "app/type/txt2img.ts", "components/DeleteForm.jsx"],
   "exclude": ["node_modules"]
 }

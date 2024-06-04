@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {Txt2img} from "@/app/type/txt2img";
+import {Txt2img, createTxt2img} from "@/app/type/txt2img";
 
 const routePath='/sdapi/v1/txt2img'
 
@@ -14,12 +14,18 @@ export async function POST(request: NextRequest) {
     const prompt = data.get('enprompt')?.toString() || ''
     const sd_model_checkpoint = data.get('model')?.toString() || ''
 
-    const body : Txt2img = {
+    // const body : Txt2img = {
+    //     prompt,
+    //     override_settings:{
+    //         sd_model_checkpoint
+    //     }
+    // }
+
+    const body = createTxt2img({
         prompt,
         override_settings:{
             sd_model_checkpoint
-        }
-    }
+        }})
 
     const txt2imgRes = await fetch(baseUrl + port + routePath,{
         method:'POST',

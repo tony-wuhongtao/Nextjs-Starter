@@ -1,16 +1,16 @@
 'use client'
-import React from "react"
+import React , { ChangeEvent }  from "react"
 import axios from 'axios';
 import Spinner from "@/components/Spinner"
 
-const cn2enPage = () => {
+const Cn2enPage = () => {
 
     const [isLoading, setIsLoading] = React.useState(false)
     const [isButtonDisabled, setIsButtonDisabled] = React.useState(false)
     const [cnTxt, setCnTxt] = React.useState('')
     const [enTxt, setEnTxt] = React.useState('')
 
-    const handleCnTxtChange = (e) => {
+    const handleCnTxtChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setCnTxt(e.target.value)
     }
     const handleSubmit = async () => {
@@ -80,4 +80,4 @@ const cn2enPage = () => {
     )
 }
 
-export default cn2enPage
+export default Cn2enPage

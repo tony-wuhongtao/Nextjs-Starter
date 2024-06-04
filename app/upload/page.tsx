@@ -4,9 +4,9 @@ import Loading from "@/components/Loading";
 import { useState } from "react"
 
 
-export default function uploadPage(){
+export default function UploadPage(){
 
-    const [file, setFile ] = useState<File>('')
+    const [file, setFile ] = useState<File>()
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [imgUrl, setImgUrl] = useState('')

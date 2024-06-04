@@ -8,7 +8,10 @@ export async function POST(request: NextRequest) {
     const file: File | null = data.get('file') as unknown as File
 
     if(!file) { 
-        return new NextRequest(JSON.stringify({ message: 'No file provided' }))
+        return NextResponse.json({ 
+            message: 'No file provided'
+        },{status: 400}
+        )
     }
 
     const bytes = await file.arrayBuffer()
@@ -26,12 +29,13 @@ export async function POST(request: NextRequest) {
         buffer
     )
 
-    return new NextResponse(JSON.stringify({ 
+    return NextResponse.json({ 
         message: 'success',
         size: file.size,
         path: `/upload/${timestamp}_${file.name}`,
         base64: buffer.toString('base64'),
         name: file.name,
-    }))
+    })
+
     
 }

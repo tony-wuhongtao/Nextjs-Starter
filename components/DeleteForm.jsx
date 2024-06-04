@@ -15,7 +15,7 @@ const SubmitBtn = () => {
     ) 
 }
 
-const DeleteForm = ({id}:{id:string}) => {
+const DeleteForm = ({id}) => {
   return (
     <form action={deleteTask}>
         <input type="hidden" name='id' value={id} />

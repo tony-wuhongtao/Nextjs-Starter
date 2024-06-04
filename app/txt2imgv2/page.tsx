@@ -41,7 +41,7 @@ export default function Txt2ImagePage() {
           method: 'POST',
           body: JSON.stringify({ cnTxt: cnprompt }),
         })
-        const data = await res.json()
+        const data:any = await res.json()
   
  
         enprompt = data
@@ -49,9 +49,11 @@ export default function Txt2ImagePage() {
         
         console.log(enprompt)
 
+        if (enprompt !== null) {
         // 更新 formData，将 enprompt 添加到其中
-        formData.set('enprompt', enprompt);
+          formData.set('enprompt', enprompt);
         // Update input field with new value
+        }
 
       } catch (error) {
         console.error('Error:', error)

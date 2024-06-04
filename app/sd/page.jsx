@@ -12,7 +12,7 @@ export default function Txt2ImagePage() {
   const [isLoading, setIsLoading] = useState(false);
 
 
-  const handleSubmit = async (event:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event) => {
     event.preventDefault() // 防止表单提交导致页面刷新
     
     setImgCode('')
