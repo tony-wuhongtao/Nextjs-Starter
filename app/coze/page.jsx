@@ -10,6 +10,7 @@ const cozeHeadlinePage = () => {
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false)
   const [query, setQuery] = React.useState('')
   const [result, setResult] = React.useState()
+  const [hasRAG, setHasRAG] = React.useState(true)
 
 
   
@@ -21,13 +22,17 @@ const cozeHeadlinePage = () => {
   const handleSubmit = async () => {
     setIsLoading(true)
     setIsButtonDisabled(true)
+    setHasRAG(true)
 
     axios.post('/api/coze', { query }).then((res) => {
       console.log('res', res.data.info)
       if(res.data.code == 201){
-        setResult("抱歉，没有找到相关课程")
+        setHasRAG(false)
+        setResult()
       }else{
+        setHasRAG(true)
         setResult(res.data.info)
+      
       }
       
 
@@ -82,7 +87,7 @@ const cozeHeadlinePage = () => {
               </div>
             </div>
           </div>
-        ) : null}
+        ) : hasRAG? null:(<div className="w-full text-xl text-yellow-600">对不起，问题超出我的知识范围，没有找到相关视频。<br />请再详细点询问，或问其他问题。</div>)}
         </div>
     </div>
     </div>

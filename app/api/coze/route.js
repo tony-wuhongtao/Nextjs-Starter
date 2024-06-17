@@ -66,6 +66,8 @@ export async function POST(req){
     const res_obj = extractJsonFromText(res_json.messages[1].content)
 
     if(res_obj == null){
+        console.log("res_obj is null")
+        
         return new NextResponse(JSON.stringify({
             "code": 201,
             "info": "对不起，你的困惑已超出我的智能知识库范围，无法推荐相关视频。"
