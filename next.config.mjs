@@ -17,7 +17,8 @@ const nextConfig = {
             headers: [{ key: 'Access-Control-Allow-Origin', value: '*' }],
           },
         ];
-      }
+      },
+      output: "standalone",
 
 };
 

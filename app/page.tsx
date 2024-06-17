@@ -15,6 +15,10 @@ function HomePage() {
       <Link href='/sd' className="btn btn-primary text-2xl">
         Go to SD
       </Link>
+      <br />
+      <Link href='/coze' className="btn btn-outline text-2xl my-8">
+        同上一堂课课程智能推荐
+      </Link>
     </div>
   )
 }
