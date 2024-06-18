@@ -27,9 +27,9 @@ const cozeHeadlinePage = () => {
     setIsLoading(true)
     setIsButtonDisabled(true)
     setHasRAG(true)
+    setVideoUrl()
 
     axios.post('/api/coze', { query }).then((res) => {
-      console.log('res', res.data.info)
       if(res.data.code == 201){
         setHasRAG(false)
         setResult()
@@ -40,8 +40,6 @@ const cozeHeadlinePage = () => {
      
       }
       
-
-
     }).catch((err) => {
       console.log('err', err)
     }).finally(() => {
@@ -53,20 +51,22 @@ const cozeHeadlinePage = () => {
     
   }
 
+
   const videoRef = useRef(null);
 
-    useEffect(() => {
-        if (videoRef.current) {
-            const player = TCPlayer(videoRef.current, {
-                sources: [{
-                    src: videoUrl,
-                }],
-                licenseUrl: 'https://license.vod2.myqcloud.com/license/v2/1308661065_1/v_cube.license',
-            });
+  useEffect(() => {
+    if (videoRef.current) {
+        const player = TCPlayer(videoRef.current, {
+            sources: [{
+                src: videoUrl,
+            }],
+            licenseUrl: 'https://license.vod2.myqcloud.com/license/v2/1308661065_1/v_cube.license',
+        });
 
-            // player.play();
-        }
-    }, [videoUrl]);
+        // player.play();
+    }
+
+  }, [videoUrl]);
 
 
 
