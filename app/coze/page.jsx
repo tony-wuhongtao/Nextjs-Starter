@@ -1,7 +1,11 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import axios from 'axios';
 import Spinner from "@/components/Spinner"
+
+import TCPlayer from 'tcplayer.js';
+import 'tcplayer.js/dist/tcplayer.min.css';
+
 
 
 const cozeHeadlinePage = () => {
@@ -11,9 +15,9 @@ const cozeHeadlinePage = () => {
   const [query, setQuery] = React.useState('')
   const [result, setResult] = React.useState()
   const [hasRAG, setHasRAG] = React.useState(true)
+  const [videoUrl, setVideoUrl] = React.useState('')
 
 
-  
   const handleQueryChange = (e) => {
     setQuery(e.target.value)
   }
@@ -32,7 +36,8 @@ const cozeHeadlinePage = () => {
       }else{
         setHasRAG(true)
         setResult(res.data.info)
-      
+        setVideoUrl(res.data.info.video_url)
+     
       }
       
 
@@ -40,12 +45,30 @@ const cozeHeadlinePage = () => {
     }).catch((err) => {
       console.log('err', err)
     }).finally(() => {
+
       setIsLoading(false)
       setIsButtonDisabled(false)
     })
 
     
   }
+
+  const videoRef = useRef(null);
+
+    useEffect(() => {
+        if (videoRef.current) {
+            const player = TCPlayer(videoRef.current, {
+                sources: [{
+                    src: videoUrl,
+                }],
+                licenseUrl: 'https://license.vod2.myqcloud.com/license/v2/1308661065_1/v_cube.license',
+            });
+
+            // player.play();
+        }
+    }, [videoUrl]);
+
+
 
   return (
     <div className="flex justify-center items-center h-screen">      
@@ -81,15 +104,27 @@ const cozeHeadlinePage = () => {
             <div className="card-body">
               <h2 className="card-title">{result.video_name}</h2>
               <p>{result.video_teacher}</p>
-              <p>{result.video_info}</p>
+              <p>{result.video_info}</p>              
               <div className="card-actions justify-end">
-                <a href={result.video_url} target='_blank'><button className="btn btn-primary">看视频课程</button></a>
+                {/* <a href={result.video_url} target='_blank'><button className="btn btn-primary">看视频课程</button></a> */}
               </div>
+              
             </div>
+            
+              
+
           </div>
         ) : hasRAG? null:(<div className="w-full text-xl text-yellow-600">对不起，问题超出我的知识范围，没有找到相关视频。<br />请再详细点询问，或问其他问题。</div>)}
+        </div>    
+        {videoUrl ? (
+
+          <div className="flex justify-center">
+          <video ref={videoRef} height="400" preload="auto" playsinline webkit-playsinline>
+          </video>
         </div>
+        ) :null}    
     </div>
+
     </div>
   )
 }
