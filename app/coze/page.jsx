@@ -2,13 +2,13 @@
 import React, { useEffect, useRef } from 'react'
 import axios from 'axios';
 import Spinner from "@/components/Spinner"
+// import ReactPlayer from 'react-player';
+// import dynamic from 'next/dynamic'
+import { Player,BigPlayButton,ReplayControl,ForwardControl,ControlBar,LoadingSpinner  } from 'video-react';
+import "video-react/dist/video-react.css"; 
 
-import TCPlayer from 'tcplayer.js';
-import 'tcplayer.js/dist/tcplayer.min.css';
 
-
-
-const cozeHeadlinePage = () => {
+const CozeHeadlinePage = () => {
 
   const [isLoading, setIsLoading] = React.useState(false)
   const [isButtonDisabled, setIsButtonDisabled] = React.useState(false)
@@ -17,6 +17,7 @@ const cozeHeadlinePage = () => {
   const [hasRAG, setHasRAG] = React.useState(true)
   const [videoUrl, setVideoUrl] = React.useState('')
 
+  // const TCVideoPlayer = dynamic(() => import('@/components/TCVideoPlayer'), { ssr: false })
 
   const handleQueryChange = (e) => {
     setQuery(e.target.value)
@@ -54,19 +55,19 @@ const cozeHeadlinePage = () => {
 
   const videoRef = useRef(null);
 
-  useEffect(() => {
-    if (videoRef.current) {
-        const player = TCPlayer(videoRef.current, {
-            sources: [{
-                src: videoUrl,
-            }],
-            licenseUrl: 'https://license.vod2.myqcloud.com/license/v2/1308661065_1/v_cube.license',
-        });
+  // useEffect(() => {
+  //   if (videoRef.current) {
+  //       const player = TCPlayer(videoRef.current, {
+  //           sources: [{
+  //               src: videoUrl,
+  //           }],
+  //           licenseUrl: 'https://license.vod2.myqcloud.com/license/v2/1308661065_1/v_cube.license',
+  //       });
 
-        // player.play();
-    }
+  //       // player.play();
+  //   }
 
-  }, [videoUrl]);
+  // }, [videoUrl]);
 
 
 
@@ -119,9 +120,29 @@ const cozeHeadlinePage = () => {
         {videoUrl ? (
 
           <div className="flex justify-center">
-          <video ref={videoRef} height="400" preload="auto" playsinline webkit-playsinline>
-          </video>
-        </div>
+            {/* <TCVideoPlayer videoInfo={result}/>           */}
+            {/* <ReactPlayer
+            url= {videoUrl}
+            controls
+            height={400}
+            width={700}
+            /> */}
+            <Player
+              startTime = {13}
+              preload="auto"
+              poster={result.video_cover}
+              src={videoUrl}
+            >
+              <BigPlayButton position="center" />
+              <LoadingSpinner />
+              <ControlBar autoHide={true}>
+                <ReplayControl seconds={10} order={2.1} />
+                <ForwardControl seconds={10} order={2.2} />
+              </ControlBar>
+
+              {/* <ControlBar autoHide={false} className="my-class" /> */}
+            </Player>
+          </div>
         ) :null}    
     </div>
 
@@ -129,4 +150,4 @@ const cozeHeadlinePage = () => {
   )
 }
 
-export default cozeHeadlinePage
+export default CozeHeadlinePage
